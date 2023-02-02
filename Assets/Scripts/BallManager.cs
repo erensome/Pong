@@ -7,11 +7,14 @@ public class BallManager : MonoBehaviour
     private Rigidbody2D ballRb;
     public float launchForce = 5f;
     private float launchTime = 1.5f;
+
+    private GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
-        ballRb.AddForce(GetVector() * launchForce, ForceMode2D.Impulse);
+        GM = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        ballRb.AddForce(GetVector() * launchForce, ForceMode2D.Impulse);        
     }
 
     // Update is called once per frame
@@ -29,15 +32,35 @@ public class BallManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        bool scorer;
+        // Player scored
         if(other.gameObject.name == "Enemy Dead Zone")
         {
-            // Player scored
-            StartCoroutine(WaitAndLaunch(true,launchTime));
+            scorer = true;
+            GM.PlayerScore++;
+            // check is game over
+            if(!GM.isGameOver)
+            {
+                StartCoroutine(WaitAndLaunch(scorer,launchTime)); 
+            }      
+            else
+            {
+                GM.GameOver(scorer);
+            }      
         }
         else if(other.gameObject.name == "Player Dead Zone")
         {
+            scorer = false;
+            GM.EnemyScore++;
             // Enemy scored
-            StartCoroutine(WaitAndLaunch(false,launchTime));
+            if(!GM.isGameOver)
+            {
+                StartCoroutine(WaitAndLaunch(scorer,launchTime)); 
+            }
+            else
+            {
+                GM.GameOver(scorer);
+            }          
         }
     }
 
