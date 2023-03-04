@@ -1,24 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private GameObject ball;
-    public float speed = 100f;
+    private Rigidbody2D ballRb;
+    private Rigidbody2D enemyRb;
+    public float speed;
+    
     // Start is called before the first frame update
     void Start()
     {
-        ball = GameObject.Find("Ball");
+        ballRb = GameObject.Find("Ball").GetComponent<Rigidbody2D>();
+        enemyRb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        float yBall = ball.transform.position.y;
-        Vector2 enemyPos = ball.transform.position;
-        enemyPos.x= -10f;
-        transform.position = Vector2.MoveTowards(transform.position,enemyPos,speed * Time.deltaTime);
-        //transform.position = new Vector3(-10f,yBall,0f);
+        if (ballRb.velocity.x < 0.0f)
+        {
+            if (ballRb.position.y > transform.position.y)
+            {
+                enemyRb.AddForce(Vector2.up * speed);
+            }
+            else if (ballRb.position.y < transform.position.y)
+            {
+                enemyRb.AddForce(Vector2.down * speed);
+            }
+        }
+        else
+        {
+            if(transform.position.y > 0.0f) enemyRb.AddForce(Vector2.down * speed);
+            else if(transform.position.y < 0.0f) enemyRb.AddForce(Vector2.up * speed);
+        }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = new Vector2(-10f, 0f);
+        enemyRb.velocity = Vector2.zero;
     }
 }

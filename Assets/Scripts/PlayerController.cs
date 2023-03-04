@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private float xBound = 10;
     private float yBound = 4;
+    
     // Start is called before the first frame update
     void Start()
     {
