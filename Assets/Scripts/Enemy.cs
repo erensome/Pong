@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     {
         ballRb = GameObject.Find("Ball").GetComponent<Rigidbody2D>();
         enemyRb = GetComponent<Rigidbody2D>();
+        //speed = StateManager.Instance.m_enemySpeed;
     }
 
     private void FixedUpdate()

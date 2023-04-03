@@ -3,21 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip boundCollSfx;
+    [SerializeField] private AudioClip paddleCollSfx;
+    public PlayerController playerPaddle;
+    public Enemy enemyPaddle;
+    public AudioClip scoreSfx;
+    public GameObject gameOverElements;
+    public Text gameOverText;
+    public Text playerScoreText;
+    public Text enemyScoreText;
+    public int scoreLimit = 3;
+    [HideInInspector] public bool isGameOver;
+    
+    private bool lastScorer;
     private int playerScore = 0;
     private int enemyScore = 0;
     private AudioSource audioSource;
-    
-    public Enemy enemyPaddle;
-    public AudioClip scoreSfx;
-    public int scoreLimit = 3;
-    
-    [HideInInspector]
-    public bool isGameOver = false;
-    [HideInInspector]
-    public bool lastScorer = false;
     
     // Start is called before the first frame update
     private void Start()
@@ -25,6 +30,50 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public bool GetLastScorer()
+    {
+        return lastScorer;
+    }
+
+    public void Scored(bool scorer)
+    {
+        if (scorer)
+        {
+            playerScore++;
+            lastScorer = true;
+            playerScoreText.text = $"{playerScore}";
+        }
+        else
+        {
+            enemyScore++;
+            lastScorer = false;
+            enemyScoreText.text = $"{enemyScore}";
+        }
+        enemyPaddle.ResetPosition();
+        audioSource.PlayOneShot(scoreSfx);
+        ResetZones();
+        CheckGame();
+    }
+    
+    public void BoundCollisionPlay()
+    {
+        audioSource.PlayOneShot(boundCollSfx);
+    }
+
+    public void PaddleCollisionPlay()
+    {
+        audioSource.PlayOneShot(paddleCollSfx);
+    }
+
+    private void ResetZones()
+    {
+        var zones = FindObjectsOfType<ZoneBehaviour>();
+        foreach (var zone in zones)
+        {
+            zone.DeactivateWall();
+        }
+    }
+    
     private void CheckGame()
     {
         if(enemyScore == scoreLimit || playerScore == scoreLimit)
@@ -32,36 +81,22 @@ public class GameManager : MonoBehaviour
             GameOver(lastScorer);
         }
     }
-
-    public void PlayerScored()
-    {
-        playerScore++;
-        lastScorer = true;
-        enemyPaddle.ResetPosition();
-        audioSource.PlayOneShot(scoreSfx);
-        CheckGame();
-    }
     
-    public void EnemyScored()
-    {
-        enemyScore++;
-        lastScorer = false;
-        enemyPaddle.ResetPosition();
-        audioSource.PlayOneShot(scoreSfx);
-        CheckGame();
-    }
-    
-    public void GameOver(bool winner)
+    private void GameOver(bool winner)
     {
         isGameOver = true;
+        playerPaddle.enabled = false;
+        gameOverElements.SetActive(true);
+        Destroy(enemyPaddle);
+        
         // if player wins then winner will be true
         if(winner)
         {
-            Debug.Log("Player Kazandi");
+            gameOverText.text = $"You Win!";
         }
         else
         {
-            Debug.Log("Enemy Kazandi");
+            gameOverText.text = $"You Lost!";
         }
     }
     

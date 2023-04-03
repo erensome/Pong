@@ -6,6 +6,11 @@ using UnityEngine;
 public class BouncySurface : MonoBehaviour
 {
     public float bounceStrength;
+
+    private void Start()
+    {
+        //bounceStrength = StateManager.Instance.m_bounceStrength;
+    }
     
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -13,8 +18,10 @@ public class BouncySurface : MonoBehaviour
 
         if (ballRb != null)
         {
-            var normal = other.contacts[0].normal;
-            ballRb.AddForce(-normal * bounceStrength);
+            float x = ballRb.velocity.x;
+            float y = -other.contacts[0].normal.y;
+            Vector2 forceVector = new Vector2(x, y);
+            ballRb.AddForce(forceVector * bounceStrength);
         }
     }
 }

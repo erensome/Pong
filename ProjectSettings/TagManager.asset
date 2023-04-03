@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Player Dead Zone
-  - Enemy Dead Zone
+  - Boundary
+  - Powerup
+  - Enemy
+  - Zone
   layers:
   - Default
   - TransparentFX
