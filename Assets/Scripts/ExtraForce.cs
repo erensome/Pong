@@ -19,6 +19,7 @@ public class ExtraForce : Powerup
     {
         var vel = ballRb.velocity;
         ballRb.AddForce(vel.normalized * forceStrength, ForceMode2D.Impulse);
+        soundManager.PowerupPlay(this);
         ballAnimator.Play("Force Animation");
     }
     

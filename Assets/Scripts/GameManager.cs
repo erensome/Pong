@@ -22,12 +22,11 @@ public class GameManager : MonoBehaviour
     private bool lastScorer;
     private int playerScore = 0;
     private int enemyScore = 0;
-    private AudioSource audioSource;
     
     // Start is called before the first frame update
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     public bool GetLastScorer()
@@ -50,19 +49,8 @@ public class GameManager : MonoBehaviour
             enemyScoreText.text = $"{enemyScore}";
         }
         enemyPaddle.ResetPosition();
-        audioSource.PlayOneShot(scoreSfx);
         ResetZones();
         CheckGame();
-    }
-    
-    public void BoundCollisionPlay()
-    {
-        audioSource.PlayOneShot(boundCollSfx);
-    }
-
-    public void PaddleCollisionPlay()
-    {
-        audioSource.PlayOneShot(paddleCollSfx);
     }
 
     private void ResetZones()

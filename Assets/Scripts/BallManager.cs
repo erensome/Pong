@@ -10,9 +10,9 @@ public class BallManager : MonoBehaviour
     private bool lastHit;
     private float launchTime = 1.5f;
     private Rigidbody2D ballRb;
-    [SerializeField] private GameManager GM;
-    [SerializeField] private SpawnManager SM;
-    
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private SpawnManager spawnManager;
+    [SerializeField] private SoundManager soundManager;
     public float launchForce = 5f;
 
     // Start is called before the first frame update
@@ -70,21 +70,21 @@ public class BallManager : MonoBehaviour
             var zone  = other.GetComponent<ZoneBehaviour>();
             
             // If playerZone is true then Player Scored, Otherwise enemy scored.
-            GM.Scored(zone.playerZone);
+            gameManager.Scored(zone.playerZone);
         }
         else if (other.gameObject.CompareTag("Powerup"))
         {
             Powerup powerUp = other.GetComponent<Powerup>();
             powerUp.Play();
             powerUp.DestroyThis();
-            SM.powerUpCount--;
+            spawnManager.powerUpCount--;
             return;
         }
 
-        if (!GM.isGameOver)
+        if (!gameManager.isGameOver)
         {
-            SM.DeleteAllPowerUps();
-            StartCoroutine(ResetAndLaunch(GM.GetLastScorer(), launchTime));
+            spawnManager.DeleteAllPowerUps();
+            StartCoroutine(ResetAndLaunch(gameManager.GetLastScorer(), launchTime));
         }
     }
     
@@ -92,17 +92,17 @@ public class BallManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boundary"))
         {
-            GM.BoundCollisionPlay();
+            soundManager.BoundCollisionPlay();
         }
         else if(other.gameObject.CompareTag("Player"))
         {
             lastHit = true;
-            GM.PaddleCollisionPlay();
+            soundManager.PaddleCollisionPlay();
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             lastHit = false;
-            GM.PaddleCollisionPlay();
+            soundManager.PaddleCollisionPlay();
         }
         else if (other.gameObject.CompareTag("Zone"))
         {
