@@ -18,18 +18,23 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
     
-    public void BoundCollisionPlay()
+    public void PlayBound()
     {
         audioSource.PlayOneShot(boundSfx);
     }
 
-    public void PaddleCollisionPlay()
+    public void PlayPaddle()
     {
         audioSource.PlayOneShot(paddleSfx);
     }
 
-    public void PowerupPlay(Powerup powerup)
+    public void PlayPowerup(Powerup powerup)
     {
         audioSource.PlayOneShot(powerup.powerupSfx);
+    }
+
+    public void PlayScore()
+    {
+        audioSource.PlayOneShot(scoreSfx);
     }
 }

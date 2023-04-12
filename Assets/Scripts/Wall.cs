@@ -21,7 +21,7 @@ public class Wall : Powerup
    {
       // Last hit boolean will be false by default(first time)
       bool lastHit = BM.GetLastHit();
-      soundManager.PowerupPlay(this);
+      soundManager.PlayPowerup(this);
       // True means Player paddle hit, Otherwise enemy paddle.
       if (lastHit)
       {

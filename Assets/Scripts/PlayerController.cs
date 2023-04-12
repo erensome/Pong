@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float xBound = 10;
+    [SerializeField] private float xPoint = 10;
     [SerializeField] private float yBound = 4;
     private Camera mainCam;
     
@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
         Vector3 inputPos = Input.mousePosition;
         inputPos.z = mainCam.nearClipPlane;
         transform.position = mainCam.ScreenToWorldPoint(inputPos);
-        if (transform.position.x != xBound)
+        if (transform.position.x != xPoint)
         {
-            transform.position = new Vector2(xBound, transform.position.y);
+            transform.position = new Vector2(xPoint, transform.position.y);
         }
         if (transform.position.y > yBound || transform.position.y < -yBound)
         {

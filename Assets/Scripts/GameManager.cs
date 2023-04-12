@@ -7,11 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip boundCollSfx;
-    [SerializeField] private AudioClip paddleCollSfx;
     public PlayerController playerPaddle;
     public Enemy enemyPaddle;
-    public AudioClip scoreSfx;
+    public SoundManager soundManager;
     public GameObject gameOverElements;
     public Text gameOverText;
     public Text playerScoreText;
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
             lastScorer = false;
             enemyScoreText.text = $"{enemyScore}";
         }
+        soundManager.PlayScore();
         enemyPaddle.ResetPosition();
         ResetZones();
         CheckGame();

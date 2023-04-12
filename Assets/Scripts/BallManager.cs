@@ -69,8 +69,8 @@ public class BallManager : MonoBehaviour
         {
             var zone  = other.GetComponent<ZoneBehaviour>();
             
-            // If playerZone is true then Player Scored, Otherwise enemy scored.
-            gameManager.Scored(zone.playerZone);
+            // If enemyZone is true then Player Scored, Otherwise enemy scored.
+            gameManager.Scored(zone.enemyZone);
         }
         else if (other.gameObject.CompareTag("Powerup"))
         {
@@ -92,21 +92,22 @@ public class BallManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boundary"))
         {
-            soundManager.BoundCollisionPlay();
+            soundManager.PlayBound();
         }
         else if(other.gameObject.CompareTag("Player"))
         {
             lastHit = true;
-            soundManager.PaddleCollisionPlay();
+            soundManager.PlayPaddle();
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             lastHit = false;
-            soundManager.PaddleCollisionPlay();
+            soundManager.PlayPaddle();
         }
         else if (other.gameObject.CompareTag("Zone"))
         {
             other.gameObject.GetComponent<ZoneBehaviour>().DeactivateWall();
+            soundManager.PlayBound();
         }
     }
 }

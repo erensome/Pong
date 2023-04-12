@@ -40,7 +40,7 @@ public class Freeze : Powerup
 
     private IEnumerator FreezePower()
     {
-        soundManager.PowerupPlay(this);
+        soundManager.PlayPowerup(this);
         enemy.enabled = false;
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemyAnimator.Play("Freeze Animation");

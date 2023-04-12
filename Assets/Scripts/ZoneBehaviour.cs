@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ZoneBehaviour : MonoBehaviour
 {
-    public bool playerZone;
+    public bool enemyZone;
     private BoxCollider2D _boxCollider2D;
     
     private void Start()
