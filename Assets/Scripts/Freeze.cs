@@ -10,7 +10,8 @@ public class Freeze : Powerup
     private float freezeTime = 1f;
     private bool hasStarted; // False by default. Prevent powerup overlapping.
     private Animator enemyAnimator;
-    private void Awake()
+    
+    private void Start()
     {
         var enemyGameObject = GameObject.Find("Enemy");
         enemy = enemyGameObject.GetComponent<Enemy>();
@@ -40,7 +41,7 @@ public class Freeze : Powerup
 
     private IEnumerator FreezePower()
     {
-        soundManager.PlayPowerup(this);
+        soundManager.PlaySfx("Powerup");
         enemy.enabled = false;
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         enemyAnimator.Play("Freeze Animation");

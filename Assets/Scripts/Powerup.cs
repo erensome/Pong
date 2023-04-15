@@ -5,7 +5,6 @@ using UnityEngine;
 
 public abstract class Powerup : MonoBehaviour
 {
-    public AudioClip powerupSfx;
     protected SoundManager soundManager;
     private void Awake()
     {

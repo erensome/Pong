@@ -8,7 +8,8 @@ public class ExtraForce : Powerup
     private float forceStrength = 5f;
     private Rigidbody2D ballRb;
     private Animator ballAnimator;
-    private void Awake()
+    
+    private void Start()
     {
         var ballGameObject = GameObject.Find("Ball");
         ballRb = ballGameObject.GetComponent<Rigidbody2D>();
@@ -19,7 +20,7 @@ public class ExtraForce : Powerup
     {
         var vel = ballRb.velocity;
         ballRb.AddForce(vel.normalized * forceStrength, ForceMode2D.Impulse);
-        soundManager.PlayPowerup(this);
+        soundManager.PlaySfx("Powerup");
         ballAnimator.Play("Force Animation");
     }
     

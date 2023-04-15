@@ -10,14 +10,12 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] powerupPrefabs;
 
     [SerializeField] private int powerUpLimit;
-    private int size;
     private float xBound = 6f;
     private float yBound = 3f;
     
     // Start is called before the first frame update
     void Start()
     {
-        size = powerupPrefabs.Length;
         InvokeRepeating("CheckSpawn",3f,5f);
     }
     
@@ -43,7 +41,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnPowerup()
     {
-        int index = Random.Range(0, size);
+        int index = Random.Range(0, powerupPrefabs.Length);
         var spawnPos = new Vector2(Random.Range(-xBound, xBound), Random.Range(-yBound, yBound));
         Instantiate(powerupPrefabs[index], spawnPos, Quaternion.identity);
         powerUpCount++;

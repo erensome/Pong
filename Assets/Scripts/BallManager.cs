@@ -92,22 +92,22 @@ public class BallManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boundary"))
         {
-            soundManager.PlayBound();
+            soundManager.PlaySfx("Wall");
         }
         else if(other.gameObject.CompareTag("Player"))
         {
             lastHit = true;
-            soundManager.PlayPaddle();
+            soundManager.PlaySfx("Paddle");
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             lastHit = false;
-            soundManager.PlayPaddle();
+            soundManager.PlaySfx("Paddle");
         }
         else if (other.gameObject.CompareTag("Zone"))
         {
             other.gameObject.GetComponent<ZoneBehaviour>().DeactivateWall();
-            soundManager.PlayBound();
+            soundManager.PlaySfx("Powerup");
         }
     }
 }

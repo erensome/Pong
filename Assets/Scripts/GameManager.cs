@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             lastScorer = false;
             enemyScoreText.text = $"{enemyScore}";
         }
-        soundManager.PlayScore();
+        soundManager.PlaySfx("Score");
         enemyPaddle.ResetPosition();
         ResetZones();
         CheckGame();
