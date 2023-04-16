@@ -5,15 +5,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    
+    public static SoundManager Instance;
     public Sound[] soundEffects;
     public AudioSource soundSource;
     public AudioSource musicSource;
     private bool isSoundOn = true;
     private bool isMusicOn = true;
-
+    
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(Instance);
         isSoundOn = Convert.ToBoolean(PlayerPrefs.GetInt("Sound"));
         isMusicOn = Convert.ToBoolean(PlayerPrefs.GetInt("Music"));
     }

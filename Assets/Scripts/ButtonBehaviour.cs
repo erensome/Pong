@@ -91,12 +91,14 @@ public class ButtonBehaviour : MonoBehaviour
             // Switch ON to OFF
             PlayerPrefs.SetInt("Sound", 0);
             soundButton.image.sprite = Resources.Load<Sprite>("Sprites/Sound Muted Icon");
+            SoundManager.Instance.soundSource.mute = true;
         }
         else
         {
             // Switch OFF to ON
             PlayerPrefs.SetInt("Sound", 1);
             soundButton.image.sprite = Resources.Load<Sprite>("Sprites/Sound Icon");
+            SoundManager.Instance.soundSource.mute = false;
         }
         // Toggle isSoundOn variable when clicked.
         isSoundOn = !isSoundOn;
@@ -108,11 +110,13 @@ public class ButtonBehaviour : MonoBehaviour
         {
             PlayerPrefs.SetInt("Music", 0);
             musicButton.image.sprite = Resources.Load<Sprite>("Sprites/Music Muted Icon");
+            SoundManager.Instance.musicSource.mute = true;
         }
         else
         {
             PlayerPrefs.SetInt("Music", 1);
             musicButton.image.sprite = Resources.Load<Sprite>("Sprites/Music Icon");
+            SoundManager.Instance.musicSource.mute = false;
         }
 
         isMusicOn = !isMusicOn;

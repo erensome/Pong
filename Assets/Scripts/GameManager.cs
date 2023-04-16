@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public PlayerController playerPaddle;
     public Enemy enemyPaddle;
-    public SoundManager soundManager;
     public GameObject gameOverElements;
     public Text gameOverText;
     public Text playerScoreText;
@@ -20,11 +19,10 @@ public class GameManager : MonoBehaviour
     private bool lastScorer;
     private int playerScore = 0;
     private int enemyScore = 0;
-    
-    // Start is called before the first frame update
-    private void Start()
+
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F)) SceneManager.LoadScene(0);
     }
 
     public bool GetLastScorer()
@@ -46,7 +44,7 @@ public class GameManager : MonoBehaviour
             lastScorer = false;
             enemyScoreText.text = $"{enemyScore}";
         }
-        soundManager.PlaySfx("Score");
+        SoundManager.Instance.PlaySfx("Score");
         enemyPaddle.ResetPosition();
         ResetZones();
         CheckGame();

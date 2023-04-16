@@ -12,7 +12,6 @@ public class BallManager : MonoBehaviour
     private Rigidbody2D ballRb;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private SpawnManager spawnManager;
-    [SerializeField] private SoundManager soundManager;
     public float launchForce = 5f;
 
     // Start is called before the first frame update
@@ -92,22 +91,22 @@ public class BallManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boundary"))
         {
-            soundManager.PlaySfx("Wall");
+            SoundManager.Instance.PlaySfx("Wall");
         }
         else if(other.gameObject.CompareTag("Player"))
         {
             lastHit = true;
-            soundManager.PlaySfx("Paddle");
+            SoundManager.Instance.PlaySfx("Paddle");
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             lastHit = false;
-            soundManager.PlaySfx("Paddle");
+            SoundManager.Instance.PlaySfx("Paddle");
         }
         else if (other.gameObject.CompareTag("Zone"))
         {
             other.gameObject.GetComponent<ZoneBehaviour>().DeactivateWall();
-            soundManager.PlaySfx("Powerup");
+            SoundManager.Instance.PlaySfx("Wall");
         }
     }
 }
