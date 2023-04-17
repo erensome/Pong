@@ -251,7 +251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'sounds: atari, bfxr'
+  m_Text: 'sounds: atari, bfxr, someguy22'
 --- !u!222 &250324585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -331,9 +331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music:
-
-'
+  m_Text: 'Music: GavTV29'
 --- !u!222 &262974520
 CanvasRenderer:
   m_ObjectHideFlags: 0
