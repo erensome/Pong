@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 314f36529f715f9478273ce2605a106e
+guid: cd4697ea1f656c147bac928a6e34d33c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -128,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red Powerup
+      name: Force Powerup
       rect:
         serializedVersion: 2
-        x: 0
-        y: 109
-        width: 18
-        height: 18
+        x: 4
+        y: 110
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d668545747aff9d4fa6561bd78afb802
-      internalID: -42780551
+      spriteID: 5fdbb41f3f3ac4841ac75933345a8ee0
+      internalID: 551095996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Powerup
+      name: Wall Powerup
       rect:
         serializedVersion: 2
-        x: 20
-        y: 109
-        width: 18
-        height: 18
+        x: 24
+        y: 110
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a2de977fdcb70d4a9dab7f10117f8e9
-      internalID: -1138966884
+      spriteID: 471a6ba84dc39bf48bbf0c487aa13377
+      internalID: -66632305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Powerup
+      name: Freeze Powerup
       rect:
         serializedVersion: 2
-        x: 40
-        y: 109
-        width: 18
-        height: 18
+        x: 44
+        y: 110
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c86888d7a4aa20047b406a8b9c7ef943
-      internalID: -1305023332
+      spriteID: 0d7bcd9bbec4a19449f7e3ac0bcf6e4e
+      internalID: -1479386593
       vertices: []
       indices: 
       edges: []
@@ -201,9 +201,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Green Powerup: -1138966884
-      Red Powerup: -42780551
-      Blue Powerup: -1305023332
+      Force Powerup: 551095996
+      Freeze Powerup: -1479386593
+      Wall Powerup: -66632305
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

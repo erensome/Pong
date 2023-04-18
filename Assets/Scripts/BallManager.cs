@@ -64,12 +64,17 @@ public class BallManager : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Zone"))
+        if (other.gameObject.CompareTag("Zone"))
         {
             var zone  = other.GetComponent<ZoneBehaviour>();
             
             // If enemyZone is true then Player Scored, Otherwise enemy scored.
             gameManager.Scored(zone.enemyZone);
+            if (!gameManager.isGameOver)
+            {
+                spawnManager.DeleteAllPowerUps();
+                StartCoroutine(ResetAndLaunch(gameManager.GetLastScorer(), launchTime));
+            }
         }
         else if (other.gameObject.CompareTag("Powerup"))
         {
@@ -77,13 +82,6 @@ public class BallManager : MonoBehaviour
             powerUp.Play();
             powerUp.DestroyThis();
             spawnManager.powerUpCount--;
-            return;
-        }
-
-        if (!gameManager.isGameOver)
-        {
-            spawnManager.DeleteAllPowerUps();
-            StartCoroutine(ResetAndLaunch(gameManager.GetLastScorer(), launchTime));
         }
     }
     
@@ -93,7 +91,7 @@ public class BallManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySfx("Wall");
         }
-        else if(other.gameObject.CompareTag("Player"))
+        else if (other.gameObject.CompareTag("Player"))
         {
             lastHit = true;
             SoundManager.Instance.PlaySfx("Paddle");
