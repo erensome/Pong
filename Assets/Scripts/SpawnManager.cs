@@ -16,6 +16,12 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // If not selected experimental mode then just deactivate the spawn manager and return.
+        if (!StateManager.Instance.isExperimentalMode)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         InvokeRepeating("CheckSpawn",3f,5f);
     }
     

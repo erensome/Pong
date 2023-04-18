@@ -10,6 +10,7 @@ public class StateManager : MonoBehaviour
     [HideInInspector] public float m_bounceStrength;
     [HideInInspector] public float m_enemySpeed;
     [HideInInspector] public float m_launchForce;
+    [HideInInspector] public bool  isExperimentalMode;
     
     private void Awake()
     {

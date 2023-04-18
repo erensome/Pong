@@ -9,7 +9,7 @@ public class BouncySurface : MonoBehaviour
 
     private void Start()
     {
-        //bounceStrength = StateManager.Instance.m_bounceStrength;
+        bounceStrength = StateManager.Instance.m_bounceStrength;
     }
     
     private void OnCollisionEnter2D(Collision2D other)

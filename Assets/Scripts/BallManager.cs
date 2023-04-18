@@ -18,7 +18,7 @@ public class BallManager : MonoBehaviour
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
-        //launchForce = StateManager.Instance.m_launchForce;
+        launchForce = StateManager.Instance.m_launchForce;
         
         // Wait for the user to get ready.
         Invoke("StartLaunch",1f);        

@@ -521,6 +521,7 @@ MonoBehaviour:
   m_bounceStrength: 0
   m_enemySpeed: 0
   m_launchForce: 0
+  isExperimentalMode: 0
 --- !u!1 &295431686
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class SetDifficulty : MonoBehaviour
         StateManager.Instance.m_enemySpeed = 100f;
         StateManager.Instance.m_bounceStrength = 1f;
         StateManager.Instance.m_launchForce = 8f;
+        StateManager.Instance.isExperimentalMode = true;
     }
 
     public void StartGame()
