@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +18,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isGameOver;
     
     private bool lastScorer;
-    private int playerScore = 0;
-    private int enemyScore = 0;
+    private int playerScore;
+    private int enemyScore;
+
+
+    private void Start()
+    {
+        scoreLimit = StateManager.Instance.m_scoreLimit;
+    }
 
     private void Update()
     {
