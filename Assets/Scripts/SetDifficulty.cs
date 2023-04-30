@@ -39,7 +39,7 @@ public class SetDifficulty : MonoBehaviour
         StateManager.Instance.m_bounceStrength = 1f;
         StateManager.Instance.m_launchForce = 8f;
         StateManager.Instance.isExperimentalMode = true;
-        StateManager.Instance.m_scoreLimit = 5;
+        StateManager.Instance.m_scoreLimit = 3;
     }
 
     public void StartGame()
